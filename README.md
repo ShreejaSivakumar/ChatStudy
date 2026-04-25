@@ -1,5 +1,10 @@
 # Ex. No:1b 			Study of Client Server Chat Applications
 
+# DATE : 26-04-26
+
+# NAME : SHREEJA R S
+# REF.NO : 25017561
+
 ## Aim: 
 To perform a study on Client Server Chat Applications
 ## Introduction:
@@ -73,8 +78,300 @@ Client-server chat applications are versatile tools that facilitate real-time co
 
 Client-server chat applications are foundational to real-time communication over networks. They incorporate principles of socket programming, communication protocols, and security mechanisms to provide a seamless user experience. Understanding the basics of client-server chat applications is essential for developers involved in networked application development, as they form the backbone of various collaborative communication systems. As technology evolves, chat applications continue to adapt, incorporating new features and technologies to enhance user interaction and connectivity.
 
+# CODING
+
+1. SERVER PROGRAM ( server_chat.py)
+
+```
+import socket
+
+# Create socket
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+host = "127.0.0.1"
+port = 12345
+
+# Bind and listen
+server.bind((host, port))
+server.listen(1)
+
+print("Server waiting for connection...")
+
+conn, addr = server.accept()
+print("Connected to:", addr)
+
+while True:
+    # Receive message from client
+    client_msg = conn.recv(1024).decode()
+    print("Client:", client_msg)
+
+    if client_msg.lower() == "exit":
+        break
+
+    # Send message to client
+    msg = input("Server: ")
+    conn.send(msg.encode())
+
+    if msg.lower() == "exit":
+        break
+
+conn.close()
+server.close()
+
+```
+2. CLIENT PROGRAM (client_chat.py)
+
+
+```
+import socket
+
+# Create socket
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+host = "127.0.0.1"
+port = 12345
+
+# Connect to server
+client.connect((host, port))
+
+while True:
+    # Send message to server
+    msg = input("Client: ")
+    client.send(msg.encode())
+
+    if msg.lower() == "exit":
+        break
+
+    # Receive reply from server
+    server_msg = client.recv(1024).decode()
+    print("Server:", server_msg)
+
+    if server_msg.lower() == "exit":
+        break
+
+client.close()
+
+```
+
+# OUTPUT :
+
+
+<img width="1917" height="810" alt="Screenshot 2026-04-26 003658" src="https://github.com/user-attachments/assets/113b5b1d-2015-47e0-99e9-f6c3285f2ced" />
+
+
+<img width="1919" height="493" alt="Screenshot 2026-04-26 003716" src="https://github.com/user-attachments/assets/751d0c4e-bb8e-4389-b464-4008a4549454" />
+
+
+<img width="1919" height="864" alt="Screenshot 2026-04-26 003739" src="https://github.com/user-attachments/assets/e7af4310-f550-4b19-8712-ca977e863431" />
+
+
+<img width="1766" height="445" alt="Screenshot 2026-04-26 003751" src="https://github.com/user-attachments/assets/e4e315cc-5b2e-4e58-906f-8f60cbe81ddc" />
+
 
 ## Result:
 
 Thus the study on Client Server Chat Applications has been performed
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..........................................................................................................................................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.........................................................................................................
